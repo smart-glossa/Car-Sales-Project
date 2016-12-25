@@ -6,12 +6,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 
 public class CarSales {
 	Connection con = null;
@@ -135,8 +135,9 @@ public class CarSales {
 
 	private void openConnection() throws ClassNotFoundException, Exception {
 		Class.forName(SalesConstant.MYSQL_DRIVER);
-		String URL = "jdbc:mysql://localhost:3306/carsales";
-		con = DriverManager.getConnection(URL, "root", "root");
+		//String URL = "jdbc:mysql://localhost:3306/carsales";
+		con = DriverManager.getConnection("jdbc:mysql://" + SalesConstant .MYSQL_SERVER + "/" + SalesConstant.DATABASE_NAME,
+                SalesConstant.USERNAME, SalesConstant.PASSWORD);
 		stat = con.createStatement();
 
 	}
