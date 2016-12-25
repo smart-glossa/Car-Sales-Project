@@ -50,6 +50,20 @@ public class CarSales {
 		}
 
 	}
+	public void addcar(int cid, String cno, String cname, String ccolor, String cost, FileItem files)
+			throws Exception {
+		try {
+			String query = "insert into cardetail(eId,userName,password,phoneNumber,email,Address)values(" + cid + ",'"
+					+ cno + "','" + cname + "','" + ccolor + "','" + cost + "')";
+			stat.execute(query);
+			ps = con.prepareStatement("insert into image(image,eId) values(?,?)");
+			ps.setInt(2, cid);
+			ps.setBinaryStream(1, files.getInputStream(), (int) files.getSize());
+			ps.executeUpdate();
+		} finally {
+			closeConnection();
+		}
+	}
 
 	private void openConnection() throws ClassNotFoundException, Exception {
 		Class.forName(SalesConstant.MYSQL_DRIVER);

@@ -65,6 +65,26 @@ public class CarSalesServlet extends HttpServlet {
 				obj.put("message", e.getMessage());
 			}
 			response.getWriter().print(obj);
+		}else  if(op.equals("addcar")){
+			int cid = Integer.parseInt(request.getParameter("cId"));
+			String cno = request.getParameter("cno");
+			String cname = request.getParameter("cname");
+			String ccolor = request.getParameter("ccolor");
+			String cost = request.getParameter("cost");
+			
+			JSONObject obj = new JSONObject();
+			try {
+				List<FileItem> items = sfu.parseRequest(request);
+				FileItem files = (FileItem) items.get(0);
+				CarSales car = new CarSales();
+				car.addcar(cid, cno, cname, ccolor, cost, files);
+				obj.put("status", 1);
+			} catch (Exception e) {
+				e.printStackTrace();
+				obj.put("status", 0);
+				obj.put("Message", e.getMessage());
+			}
+			response.getWriter().print(obj);
 		}
 
 	}
