@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	if (getCookie("uname") != undefined) {
 		$("body")[0].appendChild(menu());
-	    applyUser();
+		applyUser();
 		//getProfilePicture(getCookie("uname"));
 		$($(".mainpage")[0]).remove();
 		var div = document.createElement("div");
@@ -44,33 +44,33 @@ $(document).on("click","#addcars",function(key) {
 		return;
 	}
 	
-	 var url = "/carsales/car?operation=addcar&cid="
-	 + cid + "&cno=" + cno + "&cname=" + cname +"&ccolor="+color+"&cost="+cost;
-	 var request = new FormData();                   
-	 request.append('file', $('#profile')[0].files[0]);
-	 $.ajax({
-	 	url : url,
-	 	type : 'POST',
-	 	data : request,
-	 	processData : false,
-	 	contentType : false
-	 }).done(function(result) {
-	 	result = JSON.parse(result);
-	 	if (result.status == 1) {
-	 		alert("Added SuccessFully");
-	 		$('#cid').val("");
-	 		$('#cno').val("");
-	 		$('#cname').val("");
-	 		$('#ccolor').val("");
-	 		$('#cost').val("");
-	 	} else {
-	 		alert("Error caused: " + result.message);
-	 	}
+	var url = "/carsales/car?operation=addcar&cid="
+	+ cid + "&cno=" + cno + "&cname=" + cname +"&ccolor="+color+"&cost="+cost;
+	var request = new FormData();                   
+	request.append('file', $('#profile')[0].files[0]);
+	$.ajax({
+		url : url,
+		type : 'POST',
+		data : request,
+		processData : false,
+		contentType : false
+	}).done(function(result) {
+		result = JSON.parse(result);
+		if (result.status == 1) {
+			alert("Added SuccessFully");
+			$('#cid').val("");
+			$('#cno').val("");
+			$('#cname').val("");
+			$('#ccolor').val("");
+			$('#cost').val("");
+		} else {
+			alert("Error caused: " + result.message);
+		}
 
-	 }).fail(function(result) {
-	 	console.log(result);
-	 });
+	}).fail(function(result) {
+		console.log(result);
 	});
+});
 $(document).on("click", "#update", function() {
 	var cid = $('#cid').val();
 	var cname = $('#cname').val();

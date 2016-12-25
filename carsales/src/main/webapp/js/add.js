@@ -32,11 +32,11 @@ function applyUser() {
 	});
 	
 }
- function menu() {
- 	var div = document.createElement("div");
- 	div.className = "menuBar";
- 	var strVar="";
- 	strVar += "<img src='images/1.png' alt=\"logo\" id='menuLogo'>";
+function menu() {
+	var div = document.createElement("div");
+	div.className = "menuBar";
+	var strVar="";
+	strVar += "<img src='images/1.png' alt=\"logo\" id='menuLogo'>";
 	//strVar += "<div class=\"hiddenfile\">";
 	//strVar += "	  <input name=\"upload\" type=\"file\" id=\"profileupload\"\/>";
 	//strVar += "	<\/div>";
