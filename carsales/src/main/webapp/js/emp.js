@@ -89,7 +89,7 @@ $(document).on("click","#login",function(key) {
 		alert("Please Enter password");
 		$("#passw").focus().css("outline-color", "ff0000");
 		return;
-	}  //http://localhost:8080/carsales/car?operation=login&user=sathish&passwo=3232
+	}  
 	var url = "/carsales/car?operation=login&user="
 			+ user + "&passwo=" + passw;
 	$.ajax({
@@ -107,7 +107,7 @@ $(document).on("click","#login",function(key) {
 			var div = document.createElement("div");
 			div.className = "mainpage";
 			$("body")[0].appendChild(div);
-			$(".mainArea")[0].appendChild(cardetail());
+			$(".mainpage")[0].appendChild(cardetail());
 			//$(".mainArea")[0].appendChild(displayProducts());	
 		} else {
 			alert("Error caused: " + result.message);
