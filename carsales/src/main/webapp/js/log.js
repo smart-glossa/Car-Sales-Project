@@ -95,7 +95,7 @@ $(document).ready(function() {
 				alert("succfully login");
 				$("body")[0].appendChild(menu());
 				applyUser();
-			//getProfilePicture(user);
+			getProfile(user);
 			$($(".mainpage")[0]).remove();
 			var div = document.createElement("div");
 			div.className = "mainpage";
