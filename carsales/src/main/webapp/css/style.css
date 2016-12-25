@@ -11,14 +11,14 @@ textarea{
 }
 input[type=submit]{
 	width: 100px;
-	height: 30px;
+	height: 40px;
 }
 span {
 	color:green; 
 }
 .tab1{
 	position:absolute;
-	left: 20px; 
+	left:200px; 
 	top:200px; 
 }
 .tab2{
