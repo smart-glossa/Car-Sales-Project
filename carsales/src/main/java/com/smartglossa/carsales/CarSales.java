@@ -22,7 +22,7 @@ public class CarSales {
 	public void addUser(int eid,String uname, String pass, String pno, String email, String addr ,FileItem file)
 			throws Exception {
 		try {
-			String query = "insert into employee(eId,userName,password,phoneNumber,email,Address)values("+eid+"',"
+			String query = "insert into employee(eId,userName,password,phoneNumber,email,Address)values("+eid+",'"
 					+ uname + "','" + pass + "','" + pno + "','" + email + "','" + addr
 					+ "')";
 			stat.execute(query);
@@ -39,7 +39,7 @@ public class CarSales {
 	private void openConnection() throws ClassNotFoundException, Exception {
 		Class.forName(SalesConstant.MYSQL_DRIVER);
 		String URL = "jdbc:mysql://localhost:3306/carsales";
-		con = DriverManager.getConnection(URL, SalesConstant.USERNAME, SalesConstant.PASSWORD);
+		con = DriverManager.getConnection(URL,"root","root");
 		stat = con.createStatement();
 
 	}
