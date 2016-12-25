@@ -6,9 +6,9 @@
  	div.className = "menuBar";
  	var strVar="";
  	strVar += "<img src='images/1.png' alt=\"logo\" id='menuLogo'>";
-	//strVar += "<div class=\"hiddenfile\">";
-	//strVar += "	  <input name=\"upload\" type=\"file\" id=\"profileupload\"\/>";
-	//strVar += "	<\/div>";
+	strVar += "<div class=\"hiddenfile\">";
+	strVar += "	  <input name=\"upload\" type=\"file\" id=\"profileupload\"\/>";
+	strVar += "	<\/div>";
 	strVar += "<br>";
 	strVar += "<ul>";
 	strVar += "  <li><a class=\"active\" id='addcar'onclick=\"cardetail()\" >Add Car Details<\/a><\/li>";

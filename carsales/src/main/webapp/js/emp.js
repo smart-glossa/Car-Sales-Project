@@ -180,12 +180,12 @@ $(document).on("click", "#update", function() {
 	var cid = $('#cid').val();
 	var cname = $('#cname').val();
 	var cost = $('#cost').val();
-	if (pId == "") {
+	if (cid == "") {
 		alert("Please Enter CarId");
 		$("#cid").focus().css("outline-color", "#ff0000");
 		return;
 	}
-	if (pName == "") {
+	if (cname == "") {
 		alert("Please Enter CarName");
 		$("#cname").focus().css("outline-color", "#ff0000");
 		return;
@@ -195,7 +195,7 @@ $(document).on("click", "#update", function() {
 		$("#cost").focus().css("outline-color", "ff0000");
 		return;
 	}
-	var url = "/bill/bill?operation=updateProduct&pid=" + pId + "&name=" + pName + "&cost=" + cost;
+	var url = "/carsales/car?operation=updatecar&cid=" + cid + "&cname=" + cname + "&cost=" + cost;
 	var request = new FormData();                   
 	request.append('files', $('#profile')[0].files[0]);
 	$.ajax({
@@ -212,7 +212,7 @@ $(document).on("click", "#update", function() {
 			$('#cid').val("");
 			$('#cname').val("");
 			$('#cost').val("");
-			postToServer("product");
+			//postToServer("product");
                // $(".displayAll").remove();
                 //$(".mainArea")[0].appendChild(displayProducts());
             } else {

@@ -68,11 +68,11 @@ public class CarSales {
 	public void updateCar(int cid, String cno, String cname, String ccolor, String cost, FileItem files)
             throws Exception {
         try {
-            String query = "Update product set cname='" + cname + "',cost= '" + cost + "'where cid= " +cid;
+            String query = "Update cardetail set cname='" + cname + "',cost= '" + cost + "'where cid= " +cid;
             stat.execute(query);
 
             ps = con.prepareStatement(
-                    "Insert into carimage(img,cid) values(?,?) ON DUPLICATE KEY update pimage = ?");
+                    "Insert into carimage(img,cid) values(?,?) ON DUPLICATE KEY update img = ?");
             ps.setBinaryStream(1, files.getInputStream(), (int) files.getSize());
             ps.setInt(2, cid);
             ps.setBinaryStream(3, files.getInputStream(), (int) files.getSize());
