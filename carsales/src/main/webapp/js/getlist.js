@@ -13,9 +13,9 @@ function displaycars() {
 			if (result.status == 1) {
 				var array = result.products;
 				div.className = "displayAll";
-				var query = '<h3>Display Products</h3>'
+				var query = '<h3>Car Details</h3>'
 				+ "<table style='border: 1px solid black'>";
-				query += "<tr><th>ProductId</th><th>Images</th> <th>ProductName</th>  <th>ProductCost</th><th>Delete</th></tr>"
+				query += "<tr><th>CarId</th><th>Images</th> <th>ProductName</th>  <th>ProductCost</th><th>Delete</th></tr>"
 				for (var i = 0; i < array.length; i++) {
 					query += "<tr class='productRow'><td class='productId'>"
 					+ array[i].productId + "</td>";

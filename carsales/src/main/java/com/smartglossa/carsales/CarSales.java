@@ -12,7 +12,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 public class CarSales {
 	Connection con = null;
 	Statement stat = null;
@@ -104,20 +103,21 @@ public class CarSales {
 		}
 
 	}
-	 public JSONObject getUser(String uname) throws Exception {
-	        try {
-	            JSONObject obj = new JSONObject();
-	            String query = "select userName from employee where userName='" + uname + "'";
-	            rs = stat.executeQuery(query);
-	            if (rs.next()) {
-	                obj.put("name", rs.getString(1));
-	            }
-	            return obj;
-	        } finally {
-	            closeConnection();
-	        }
 
-	    }
+	public JSONObject getUser(String uname) throws Exception {
+		try {
+			JSONObject obj = new JSONObject();
+			String query = "select userName from employee where userName='" + uname + "'";
+			rs = stat.executeQuery(query);
+			if (rs.next()) {
+				obj.put("name", rs.getString(1));
+			}
+			return obj;
+		} finally {
+			closeConnection();
+		}
+
+	}
 
 	public Blob getProfileImage(String uname) throws Exception {
 		try {
@@ -135,9 +135,10 @@ public class CarSales {
 
 	private void openConnection() throws ClassNotFoundException, Exception {
 		Class.forName(SalesConstant.MYSQL_DRIVER);
-		//String URL = "jdbc:mysql://localhost:3306/carsales";
-		con = DriverManager.getConnection("jdbc:mysql://" + SalesConstant .MYSQL_SERVER + "/" + SalesConstant.DATABASE_NAME,
-                SalesConstant.USERNAME, SalesConstant.PASSWORD);
+		// String URL = "jdbc:mysql://localhost:3306/carsales";
+		con = DriverManager.getConnection(
+				"jdbc:mysql://" + SalesConstant.MYSQL_SERVER + "/" + SalesConstant.DATABASE_NAME,
+				SalesConstant.USERNAME, SalesConstant.PASSWORD);
 		stat = con.createStatement();
 
 	}

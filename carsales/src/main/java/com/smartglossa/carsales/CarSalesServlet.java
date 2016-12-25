@@ -19,10 +19,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
-
-
-
 public class CarSalesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -127,43 +123,43 @@ public class CarSalesServlet extends HttpServlet {
 				obj.put("message", e.getMessage());
 			}
 			response.getWriter().print(obj);
-		}else if (op.equals("getProfileImage")) {
-            String uname = request.getParameter("uname");
+		} else if (op.equals("getProfileImage")) {
+			String uname = request.getParameter("uname");
 
-            try {
-                CarSales cars = new CarSales();
-                Blob b = cars.getProfileImage(uname);
-                if (b != null) {
-                    response.setContentType("image/png;base64;");
-                    response.setContentLength((int) b.length());
-                    InputStream is = b.getBinaryStream();
-                    OutputStream os = response.getOutputStream();
-                    byte buf[] = new byte[(int) b.length()];
-                    byte[] result = Base64.encodeBase64(buf);
-                    is.read(result);
-                    os.write(result);
-                    os.close();
-                }
+			try {
+				CarSales cars = new CarSales();
+				Blob b = cars.getProfileImage(uname);
+				if (b != null) {
+					response.setContentType("image/png;base64;");
+					response.setContentLength((int) b.length());
+					InputStream is = b.getBinaryStream();
+					OutputStream os = response.getOutputStream();
+					byte buf[] = new byte[(int) b.length()];
+					byte[] result = Base64.encodeBase64(buf);
+					is.read(result);
+					os.write(result);
+					os.close();
+				}
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            }else if (op.equals("getUserName")) {
-                String uname = request.getParameter("uname");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (op.equals("getUserName")) {
+			String uname = request.getParameter("uname");
 
-                JSONObject obj = new JSONObject();
-                try {
-                    CarSales car = new CarSales();
-                    JSONObject result = car.getUser(uname);
-                    obj.put("status", 1);
-                    obj.put("message", result);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    obj.put("status", 0);
-                    obj.put("message", e.getMessage());
-                }
-                response.getWriter().print(obj);
-            
+			JSONObject obj = new JSONObject();
+			try {
+				CarSales car = new CarSales();
+				JSONObject result = car.getUser(uname);
+				obj.put("status", 1);
+				obj.put("message", result);
+			} catch (Exception e) {
+				e.printStackTrace();
+				obj.put("status", 0);
+				obj.put("message", e.getMessage());
+			}
+			response.getWriter().print(obj);
+
+		}
 	}
-}
 }

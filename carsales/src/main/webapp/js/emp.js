@@ -2,7 +2,7 @@ $(document).ready(function() {
 	if (getCookie("uname") != undefined) {
 		$("body")[0].appendChild(menu());
 		applyUser();
-		//getProfilePicture(getCookie("uname"));
+		getProfileImage(getCookie("uname"));
 		$($(".mainpage")[0]).remove();
 		var div = document.createElement("div");
 		div.className = "mainpage";

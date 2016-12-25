@@ -95,12 +95,12 @@ $(document).ready(function() {
 				alert("succfully login");
 				$("body")[0].appendChild(menu());
 				applyUser();
-			getProfile(user);
-			$($(".mainpage")[0]).remove();
-			var div = document.createElement("div");
-			div.className = "mainpage";
-			$("body")[0].appendChild(div);
-			$(".mainpage")[0].appendChild(cardetail());
+				getProfileImage(user);
+				$($(".mainpage")[0]).remove();
+				var div = document.createElement("div");
+				div.className = "mainpage";
+				$("body")[0].appendChild(div);
+				$(".mainpage")[0].appendChild(cardetail());
 			//$(".mainArea")[0].appendChild(displayProducts());	
 		} else {
 			alert("Error caused: " + result.message);
@@ -111,3 +111,6 @@ $(document).ready(function() {
 	});
 });
 });
+function getProfileImage(username) {
+	$("#menuLogo").attr("src", "/carsales/car?operation=getProfileImage&uname=" + uname);
+}
