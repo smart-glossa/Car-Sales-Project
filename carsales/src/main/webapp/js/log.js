@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	$(document).on("click", "#logout", function(){
     	//postToServer("logout");
-    	document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    	window.location.href = '/carsales/index.html';
+    	document.cookie = 'uname=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    	window.location.href = '/carsales/';
     });
 
 $(document).on("click","#signup",function(key) {
