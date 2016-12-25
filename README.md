@@ -25,3 +25,14 @@ PRIMARY KEY  (`imageId`),
 UNIQUE KEY `empId` (`eId`),
 CONSTRAINT `image_ibfk_1` FOREIGN KEY (`eId`) REFERENCES `employee` (`eId`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+
+Table:3
+
+CREATE TABLE `cardetail` (
+`cid` int(11) NOT NULL default '0',
+`cno` varchar(100) default NULL,
+`cname` varchar(100) default NULL,
+`color` varchar(100) default NULL,
+`cost` varchar(100) default NULL,
+PRIMARY KEY  (`cid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

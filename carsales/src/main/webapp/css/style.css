@@ -1,7 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 
-input[type=text],[type=date],[type=password]{
+input[type=text],[type=date],[type=password],[type=color]{
 	width: 180px;
 	height: 30px;
 }
@@ -23,17 +23,17 @@ span {
 }
 .tab2{
 	position:absolute;
-	 left:900px;
-	 top:200px; 
-	}
-	#menuLogo{
+	left:900px;
+	top:200px; 
+}
+#menuLogo{
 	position:absolute;
 	left:1300px;
 	top:80px; 
 	width: 60px;
 	height:60px; 
-	  
-	}
+	
+}
 .sig{
 	position:absolute;
 	top:140px;

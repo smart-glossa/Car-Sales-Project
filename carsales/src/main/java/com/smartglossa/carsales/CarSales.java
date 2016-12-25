@@ -53,7 +53,7 @@ public class CarSales {
 	public void addcar(int cid, String cno, String cname, String ccolor, String cost, FileItem files)
 			throws Exception {
 		try {
-			String query = "insert into cardetail(eId,userName,password,phoneNumber,email,Address)values(" + cid + ",'"
+			String query = "insert into cardetail(cid,cno,cname,color,cost)values(" + cid + ",'"
 					+ cno + "','" + cname + "','" + ccolor + "','" + cost + "')";
 			stat.execute(query);
 			ps = con.prepareStatement("insert into image(image,eId) values(?,?)");
