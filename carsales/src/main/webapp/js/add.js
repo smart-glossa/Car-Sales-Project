@@ -1,18 +1,49 @@
-/**
- * 
- */
+function getCookie(uname) {
+	var name = uname + "=";
+	var ca = document.cookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length,c.length);
+		}
+	}
+	return undefined;
+}
+
+function applyUser() {
+	var usname = getCookie("uname");
+	
+	$.ajax({
+		//http://localhost:8080/carsales/car?operation=getUserName&uname=sathish
+		url: "/carsales/car?operation=getUserName&uname=" + uname,
+		type: 'POST'
+	})
+	.done(function(result){
+		result = JSON.parse(result);
+		if (result.status == 1) {
+			$(".showusername").text("Welcome Mr. " + result.message);
+		}
+	})
+	.fail(function(result){
+		console.log(result);
+	});
+	
+}
  function menu() {
  	var div = document.createElement("div");
  	div.className = "menuBar";
  	var strVar="";
  	strVar += "<img src='images/1.png' alt=\"logo\" id='menuLogo'>";
-	strVar += "<div class=\"hiddenfile\">";
-	strVar += "	  <input name=\"upload\" type=\"file\" id=\"profileupload\"\/>";
-	strVar += "	<\/div>";
+	//strVar += "<div class=\"hiddenfile\">";
+	//strVar += "	  <input name=\"upload\" type=\"file\" id=\"profileupload\"\/>";
+	//strVar += "	<\/div>";
 	strVar += "<br>";
 	strVar += "<ul>";
 	strVar += "  <li><a class=\"active\" id='addcar'onclick=\"cardetail()\" >Add Car Details<\/a><\/li>";
-	strVar += "  <li><a id='billMenu'>Billing<\/a><\/li>";
+	strVar += "  <li><a id='billMenu'>All Car Detail<\/a><\/li>";
 	strVar += "  <li><a id='paymentMenu'>Payment<\/a><\/li>";
 	strVar += "  <li style=\"float:right\"><a id=\"logout\">Logout<\/a><\/li>";
 	strVar += "  <li style=\"float:right\"><a class=\"UserDetails\" href=\"#about\">About<\/a><\/li>";

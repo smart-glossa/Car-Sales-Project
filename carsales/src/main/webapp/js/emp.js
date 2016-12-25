@@ -1,13 +1,13 @@
 $(document).ready(function() {
 	if (getCookie("uname") != undefined) {
 		$("body")[0].appendChild(menu());
-	//	applyUserDetails();
+	    applyUser();
 		//getProfilePicture(getCookie("uname"));
 		$($(".mainpage")[0]).remove();
 		var div = document.createElement("div");
 		div.className = "mainpage";
 		$("body")[0].appendChild(div);
-		$(".mainArea")[0].appendChild(cardetail());
+		$(".mainpage")[0].appendChild(cardetail());
 		//$(".mainArea")[0].appendChild(displayProducts());	
 	}
 });
@@ -101,7 +101,7 @@ $(document).on("click","#login",function(key) {
 			document.cookie = "uname=" + user;
 			alert("succfully login");
 			$("body")[0].appendChild(menu());
-			//applyUserDetails();
+			applyUser();
 			//getProfilePicture(user);
 			$($(".mainpage")[0]).remove();
 			var div = document.createElement("div");
@@ -148,7 +148,7 @@ $(document).on("click","#addcars",function(key) {
 		$("#cost").focus().css("outline-color", "ff0000");
 		return;
 	}
-	 //http://localhost:8080/carsales/car?operation=addemployee&eId=1&uName=sathish&pass=121&mNo=98765467&email=sathish@gmail.com&addr=khkjjkh&file=%22C:\Users\Elcot\Pictures\2012-02\#RING TUNE (65).jpg"
+	
 	 var url = "/carsales/car?operation=addcar&cid="
 	 + cid + "&cno=" + cno + "&cname=" + cname +"&ccolor="+color+"&cost="+cost;
 	 var request = new FormData();                   
