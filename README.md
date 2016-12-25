@@ -36,3 +36,12 @@ CREATE TABLE `cardetail` (
 `cost` varchar(100) default NULL,
 PRIMARY KEY  (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `carimage` (
+`imgId` int(11) NOT NULL auto_increment,
+`img` mediumblob,
+`cid` int(11) default NULL,
+PRIMARY KEY  (`imgId`),
+KEY `image_ibfk_2` (`cid`),
+CONSTRAINT `image_ibfk_2` FOREIGN KEY (`cid`) REFERENCES `cardetail` (`cid`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
