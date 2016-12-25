@@ -91,7 +91,7 @@ $(document).on("click","#login",function(key) {
 		return;
 	}  
 	var url = "/carsales/car?operation=login&user="
-			+ user + "&passwo=" + passw;
+	+ user + "&passwo=" + passw;
 	$.ajax({
 		url : url,
 		type : 'POST'
@@ -103,7 +103,7 @@ $(document).on("click","#login",function(key) {
 			$("body")[0].appendChild(menu());
 			//applyUserDetails();
 			//getProfilePicture(user);
-		$($(".mainpage")[0]).remove();
+			$($(".mainpage")[0]).remove();
 			var div = document.createElement("div");
 			div.className = "mainpage";
 			$("body")[0].appendChild(div);
@@ -149,30 +149,79 @@ $(document).on("click","#addcars",function(key) {
 		return;
 	}
 	 //http://localhost:8080/carsales/car?operation=addemployee&eId=1&uName=sathish&pass=121&mNo=98765467&email=sathish@gmail.com&addr=khkjjkh&file=%22C:\Users\Elcot\Pictures\2012-02\#RING TUNE (65).jpg"
-			var url = "/carsales/car?operation=addcar&cid="
-			+ cid + "&cno=" + cno + "&cname=" + cname +"&ccolor="+color+"&cost="+cost;
-			var request = new FormData();                   
-			request.append('file', $('#profile')[0].files[0]);
-			$.ajax({
-				url : url,
-				type : 'POST',
-				data : request,
-				processData : false,
-				contentType : false
-			}).done(function(result) {
-				result = JSON.parse(result);
-				if (result.status == 1) {
-					alert("Added SuccessFully");
-					$('#cid').val("");
-					$('#cno').val("");
-					$('#cname').val("");
-					$('#ccolor').val("");
-					$('#cost').val("");
-				} else {
-					alert("Error caused: " + result.message);
-				}
+	 var url = "/carsales/car?operation=addcar&cid="
+	 + cid + "&cno=" + cno + "&cname=" + cname +"&ccolor="+color+"&cost="+cost;
+	 var request = new FormData();                   
+	 request.append('file', $('#profile')[0].files[0]);
+	 $.ajax({
+	 	url : url,
+	 	type : 'POST',
+	 	data : request,
+	 	processData : false,
+	 	contentType : false
+	 }).done(function(result) {
+	 	result = JSON.parse(result);
+	 	if (result.status == 1) {
+	 		alert("Added SuccessFully");
+	 		$('#cid').val("");
+	 		$('#cno').val("");
+	 		$('#cname').val("");
+	 		$('#ccolor').val("");
+	 		$('#cost').val("");
+	 	} else {
+	 		alert("Error caused: " + result.message);
+	 	}
 
-			}).fail(function(result) {
-				console.log(result);
-			});
-		});
+	 }).fail(function(result) {
+	 	console.log(result);
+	 });
+	});
+$(document).on("click", "#update", function() {
+	var cid = $('#cid').val();
+	var cname = $('#cname').val();
+	var cost = $('#cost').val();
+	if (pId == "") {
+		alert("Please Enter CarId");
+		$("#cid").focus().css("outline-color", "#ff0000");
+		return;
+	}
+	if (pName == "") {
+		alert("Please Enter CarName");
+		$("#cname").focus().css("outline-color", "#ff0000");
+		return;
+	}
+	if (cost == "") {
+		alert("Please Enter cost");
+		$("#cost").focus().css("outline-color", "ff0000");
+		return;
+	}
+	var url = "/bill/bill?operation=updateProduct&pid=" + pId + "&name=" + pName + "&cost=" + cost;
+	var request = new FormData();                   
+	request.append('files', $('#profile')[0].files[0]);
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data : request,
+		processData : false,
+		contentType : false
+	})
+	.done(function(result) {
+		result = JSON.parse(result);
+		if (result.status == 1) {
+			alert("Updated SuccessFully");
+			$('#cid').val("");
+			$('#cname').val("");
+			$('#cost').val("");
+			postToServer("product");
+               // $(".displayAll").remove();
+                //$(".mainArea")[0].appendChild(displayProducts());
+            } else {
+            	alert("Error caused: " + result.message);
+            }
+            
+        }).fail(function(result) {
+        	console.log(result);
+        });
+        
+
+    })
