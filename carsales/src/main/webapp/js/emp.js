@@ -117,3 +117,62 @@ $(document).on("click","#login",function(key) {
 		console.log(result);
 	});
 });
+$(document).on("click","#addcars",function(key) {
+	var cid = $('#cid').val();
+	var cno = $('#cno').val();
+	var cname = $('#cname').val();
+	var color = $('#ccolor').val();
+	var cost = $('#cost').val();
+	if (cid == "") {
+		alert("Please Enter CarID");
+		$("#cid").focus().css("outline-color", "#ff0000");
+		return;
+	}
+	if (cno == "") {
+		alert("Please Enter CarNo ");
+		$("#cno").focus().css("outline-color", "#ff0000");
+		return;
+	}
+	if (cname == "") {
+		alert("Please Enter CarName");
+		$("#cname").focus().css("outline-color", "ff0000");
+		return;
+	}
+	if (color == "") {
+		alert("Please Enter Color");
+		$("#ccolor").focus().css("outline-color", "ff0000");
+		return;
+	}
+	if (cost == "") {
+		alert("Please Enter Cost");
+		$("#cost").focus().css("outline-color", "ff0000");
+		return;
+	}
+	 //http://localhost:8080/carsales/car?operation=addemployee&eId=1&uName=sathish&pass=121&mNo=98765467&email=sathish@gmail.com&addr=khkjjkh&file=%22C:\Users\Elcot\Pictures\2012-02\#RING TUNE (65).jpg"
+			var url = "/carsales/car?operation=addcar&cid="
+			+ cid + "&cno=" + cno + "&cname=" + cname +"&ccolor="+color+"&cost="+cost;
+			var request = new FormData();                   
+			request.append('file', $('#profile')[0].files[0]);
+			$.ajax({
+				url : url,
+				type : 'POST',
+				data : request,
+				processData : false,
+				contentType : false
+			}).done(function(result) {
+				result = JSON.parse(result);
+				if (result.status == 1) {
+					alert("Added SuccessFully");
+					$('#cid').val("");
+					$('#cno').val("");
+					$('#cname').val("");
+					$('#ccolor').val("");
+					$('#cost').val("");
+				} else {
+					alert("Error caused: " + result.message);
+				}
+
+			}).fail(function(result) {
+				console.log(result);
+			});
+		});

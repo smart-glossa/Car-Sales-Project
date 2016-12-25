@@ -56,7 +56,7 @@ public class CarSales {
 			String query = "insert into cardetail(cid,cno,cname,color,cost)values(" + cid + ",'"
 					+ cno + "','" + cname + "','" + ccolor + "','" + cost + "')";
 			stat.execute(query);
-			ps = con.prepareStatement("insert into image(image,eId) values(?,?)");
+			ps = con.prepareStatement("insert into carimage(img,cid) values(?,?)");
 			ps.setInt(2, cid);
 			ps.setBinaryStream(1, files.getInputStream(), (int) files.getSize());
 			ps.executeUpdate();

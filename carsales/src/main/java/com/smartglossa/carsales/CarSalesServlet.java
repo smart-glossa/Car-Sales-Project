@@ -66,7 +66,7 @@ public class CarSalesServlet extends HttpServlet {
 			}
 			response.getWriter().print(obj);
 		}else  if(op.equals("addcar")){
-			int cid = Integer.parseInt(request.getParameter("cId"));
+			int cid = Integer.parseInt(request.getParameter("cid"));
 			String cno = request.getParameter("cno");
 			String cname = request.getParameter("cname");
 			String ccolor = request.getParameter("ccolor");
