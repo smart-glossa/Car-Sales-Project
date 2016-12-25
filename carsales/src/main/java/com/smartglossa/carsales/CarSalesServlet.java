@@ -30,9 +30,9 @@ public class CarSalesServlet extends HttpServlet {
 		String op=request.getParameter("operation");
 		if(op.equals("addemployee")){
 			int eid=Integer.parseInt(request.getParameter("eId"));
-			String uname=request.getParameter("uName");
+			String uname=request.getParameter("uname");
 			String pass=request.getParameter("pass");
-			String pno=request.getParameter("mNo");
+			String pno=request.getParameter("mno");
 			String email=request.getParameter("email");
 			String addr=request.getParameter("addr");
 			
