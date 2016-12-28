@@ -21,14 +21,16 @@ CREATE TABLE `emp` (
 
 Table:2
 
-CREATE TABLE `image` (
-`imageId` int(11) NOT NULL auto_increment,
-`image` mediumblob,
-`eId` int(100) default NULL,
-PRIMARY KEY  (`imageId`),
-UNIQUE KEY `empId` (`eId`),
-CONSTRAINT `image_ibfk_1` FOREIGN KEY (`eId`) REFERENCES `employee` (`eId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+Employee Image Table: 
+
+CREATE TABLE `empimage` (
+  `imageId` int(11) NOT NULL auto_increment,
+  `image` mediumblob,
+  `uname` varchar(100) default NULL,
+  PRIMARY KEY  (`imageId`),
+  UNIQUE KEY `username` (`uname`),
+  CONSTRAINT `image_ibfk_1` FOREIGN KEY (`uname`) REFERENCES `emp` (`uname`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1
 
 Table:3
 
