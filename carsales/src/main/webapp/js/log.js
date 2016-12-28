@@ -69,6 +69,7 @@ $(document).ready(function() {
 				$('#mno').val("");
 				$('#email').val("");
 				$('#addr').val("");
+				$('#file').val("");
 			} else {
 				alert("Error caused: " + result.message);
 			}

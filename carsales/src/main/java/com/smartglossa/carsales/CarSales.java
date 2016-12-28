@@ -135,8 +135,7 @@ public class CarSales {
 	private void openConnection() throws ClassNotFoundException, Exception {
 		Class.forName(SalesConstant.MYSQL_DRIVER);
 		// String URL = "jdbc:mysql://localhost:3306/carsales";
-		con = DriverManager.getConnection(
-				"jdbc:mysql://" + SalesConstant.MYSQL_SERVER + "/" + SalesConstant.DATABASE_NAME,
+		con = DriverManager.getConnection(SalesConstant.MYSQL_SERVER + "/" + SalesConstant.DATABASE_NAME,
 				SalesConstant.USERNAME, SalesConstant.PASSWORD);
 		stat = con.createStatement();
 
