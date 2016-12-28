@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 	$(document).on("click","#signup",function(key) {
 		var fname = $('#fname').val();
-		var lname=$('#name').val();
+		var lname=$('#lname').val();
 		var uname = $('#uname').val();
 		var pass = $('#pass').val();
 		var pno = $('#mno').val();
