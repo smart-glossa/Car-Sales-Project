@@ -4,15 +4,19 @@ Create database Name :carsales
 
 Table:1
 
-CREATE TABLE `employee` (
-`eId` int(11) NOT NULL default '0',
-`userName` varchar(100) default NULL,
-`password` varchar(100) default NULL,
-`phoneNumber` varchar(100) default NULL,
-`email` varchar(100) default NULL,
-`Address` varchar(255) default NULL,
-PRIMARY KEY  (`eId`),
-UNIQUE KEY `userName` (`userName`)
+Employee Detail Table: 
+
+CREATE TABLE `emp` (
+  `eid` int(11) NOT NULL auto_increment,
+  `fname` varchar(100) default NULL,
+  `lname` varchar(100) default NULL,
+  `uname` varchar(100) default NULL,
+  `pass` varchar(100) default NULL,
+  `mno` varchar(100) default NULL,
+  `email` varchar(100) default NULL,
+  `addr` varchar(100) default NULL,
+  PRIMARY KEY  (`eid`),
+  UNIQUE KEY `uname` (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 
 Table:2
