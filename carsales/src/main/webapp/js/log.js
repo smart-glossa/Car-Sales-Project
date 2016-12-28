@@ -6,44 +6,50 @@ $(document).ready(function() {
     });
 
 	$(document).on("click","#signup",function(key) {
-		var eid = $('#eId').val();
+		var fname = $('#fname').val();
+		var lname=$('#name').val();
 		var uname = $('#uname').val();
 		var pass = $('#pass').val();
 		var pno = $('#mno').val();
 		var email = $('#email').val();
 		var addr = $('#addr').val();
-		if (eid == "") {
-			alert("Please Enter EmployeeId");
-			$("#eId").focus().css("outline-color", "#ff0000");
+		if (fname == "") {
+			alert("Please Enter Your FirstName..");
+			$("#fname").focus().css("outline-color", "#ff0000");
+			return;
+		}
+		if (lname == "") {
+			alert("Please Enter Your LastName.. ");
+			$("#lname").focus().css("outline-color", "#ff0000");
 			return;
 		}
 		if (uname == "") {
-			alert("Please Enter username ");
+			alert("Please Enter Your username ");
 			$("#uname").focus().css("outline-color", "#ff0000");
 			return;
 		}
 		if (pass == "") {
-			alert("Please Enter password");
+			alert("Please Enter Your password");
 			$("#pass").focus().css("outline-color", "ff0000");
 			return;
 		}
 		if (pno == "") {
-			alert("Please Enter MobileNumber");
+			alert("Please Enter Your MobileNumber");
 			$("#mno").focus().css("outline-color", "ff0000");
 			return;
 		}
 		if (email == "") {
-			alert("Please Enter EmailId");
+			alert("Please Enter Your EmailId");
 			$("#email").focus().css("outline-color", "ff0000");
 			return;
 		}
 		if (addr == "") {
-			alert("Please Enter Address");
+			alert("Please Enter  Your Address");
 			$("#addr").focus().css("outline-color", "ff0000");
 			return;
 		} 
-		var url = "/carsales/car?operation=addemployee&eId="
-		+ eid + "&uname=" + uname + "&pass=" + pass+"&mno="+pno+"&email="+email+"&addr="+addr;
+		var url = "/carsales/car?operation=addemployee&fname="
+		+ fname + "&lname=" +lname+ "&uname=" + uname + "&pass=" + pass+"&mno="+pno+"&email="+email+"&addr="+addr;
 		var request = new FormData();                   
 		request.append('file', $('#profile')[0].files[0]);
 		$.ajax({
@@ -56,7 +62,8 @@ $(document).ready(function() {
 			result = JSON.parse(result);
 			if (result.status == 1) {
 				alert("Added SuccessFully");
-				$('#eId').val("");
+				$('#fname').val("");
+				$('#lname').val("");
 				$('#uname').val("");
 				$('#pass').val("");
 				$('#mno').val("");
