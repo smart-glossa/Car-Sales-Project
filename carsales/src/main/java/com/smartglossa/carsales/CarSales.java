@@ -22,14 +22,13 @@ public class CarSales {
 
 	}
 
-	public void addUser(int eid, String fname, String lname, String uname, String pass, String pno, String email,
-			String addr, FileItem file) throws Exception {
+	public void addUser(String fname, String lname, String uname, String pass, String pno, String email, String addr,
+			FileItem file) throws Exception {
 		try {
-			String query = "insert into employee(eId,userName,password,phoneNumber,email,Address)values(" + eid + ",'"
-					+ fname + "','" + lname + "','" + uname + "','" + pass + "','" + pno + "','" + email + "','" + addr
-					+ "')";
+			String query = "insert into emp(fname,lname,uname,pass,mno,email,addr)values('" + fname + "','" + lname
+					+ "','" + uname + "','" + pass + "','" + pno + "','" + email + "','" + addr + "')";
 			stat.execute(query);
-			ps = con.prepareStatement("insert into image(image,uname) values(?,?)");
+			ps = con.prepareStatement("insert into empimage(image,uname) values(?,?)");
 			ps.setString(2, uname);
 			ps.setBinaryStream(1, file.getInputStream(), (int) file.getSize());
 			ps.executeUpdate();
