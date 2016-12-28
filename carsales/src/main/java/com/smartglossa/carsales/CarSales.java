@@ -1,6 +1,5 @@
 package com.smartglossa.carsales;
 
-import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,14 +22,15 @@ public class CarSales {
 
 	}
 
-	public void addUser(int eid, String uname, String pass, String pno, String email, String addr, FileItem file)
-			throws Exception {
+	public void addUser(int eid, String fname, String lname, String uname, String pass, String pno, String email,
+			String addr, FileItem file) throws Exception {
 		try {
 			String query = "insert into employee(eId,userName,password,phoneNumber,email,Address)values(" + eid + ",'"
-					+ uname + "','" + pass + "','" + pno + "','" + email + "','" + addr + "')";
+					+ fname + "','" + lname + "','" + uname + "','" + pass + "','" + pno + "','" + email + "','" + addr
+					+ "')";
 			stat.execute(query);
-			ps = con.prepareStatement("insert into image(image,eId) values(?,?)");
-			ps.setInt(2, eid);
+			ps = con.prepareStatement("insert into image(image,uname) values(?,?)");
+			ps.setString(2, uname);
 			ps.setBinaryStream(1, file.getInputStream(), (int) file.getSize());
 			ps.executeUpdate();
 		} finally {

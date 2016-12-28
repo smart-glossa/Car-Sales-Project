@@ -35,6 +35,8 @@ public class CarSalesServlet extends HttpServlet {
 		String op = request.getParameter("operation");
 		if (op.equals("addemployee")) {
 			int eid = Integer.parseInt(request.getParameter("eId"));
+			String fname=request.getParameter("fname");
+			String lname=request.getParameter("lname");
 			String uname = request.getParameter("uname");
 			String pass = request.getParameter("pass");
 			String pno = request.getParameter("mno");
@@ -46,7 +48,7 @@ public class CarSalesServlet extends HttpServlet {
 				List<FileItem> items = sfu.parseRequest(request);
 				FileItem file = (FileItem) items.get(0);
 				CarSales car = new CarSales();
-				car.addUser(eid, uname, pass, pno, email, addr, file);
+				car.addUser(eid,fname,lname,uname, pass, pno, email, addr, file);
 				obj.put("status", 1);
 			} catch (Exception e) {
 				e.printStackTrace();
