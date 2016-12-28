@@ -40,7 +40,7 @@ public class CarSales {
 	public JSONObject login(String uname, String pass) throws Exception {
 		try {
 			JSONObject obj = new JSONObject();
-			String query = "select userName from employee where userName='" + uname + "'AND password='" + pass + "'";
+			String query = "select userName from emp where uname='" + uname + "'AND pass='" + pass + "'";
 			rs = stat.executeQuery(query);
 			if (rs.next()) {
 				obj.put("name", rs.getString(1));

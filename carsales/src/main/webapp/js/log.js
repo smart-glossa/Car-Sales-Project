@@ -100,7 +100,7 @@ $(document).ready(function() {
 			result = JSON.parse(result);
 			if (result.status == 1) {
 				document.cookie = "uname=" + user;
-				alert("succfully login");
+				alert("succssfully login");
 				$("body")[0].appendChild(menu());
 				applyUser();
 				getProfileImage(user);
